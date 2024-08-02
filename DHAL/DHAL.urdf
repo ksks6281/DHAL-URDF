@@ -761,7 +761,7 @@
         <child link="Torso"/>
         <axis xyz="0 0 1"/>
         <dynamics rotor_inertia="0.0724" damping="0" friction="0"/>
-        <limit effort="360.0" velocity="10.0" lower="-1.57080" upper="-1.57080"/>
+        <limit effort="360.0" velocity="10.0" lower="-1.57080" upper="1.57080"/>
     </joint>
     <link name="Torso">
         <visual>
