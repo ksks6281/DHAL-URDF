@@ -31,49 +31,78 @@
         <visual>
             <origin rpy="0 0 0" xyz="0 0 0"/>
             <geometry>
-                <mesh filename="Pelvis.dae" scale="1 1 1"/>
+                <mesh filename="URDF_Pelvis.dae" scale="1 1 1"/>
             </geometry>
             <material name="grey"/>
         </visual>
         <collision>
-            <origin rpy="0 0 0" xyz="0 0 0"/>
+            <origin rpy="0 0.785398 0" xyz="0.03 0 0.03"/>
             <geometry>
-                <box size="0.12 0.32 0.1"/>
+                <box size="0.11 0.32 0.09"/>
             </geometry>
         </collision>
         <inertial>
-            <origin rpy="0 0 0" xyz="0.002084 0 -0.009262"/>
-            <mass value="4.775304"/>
-            <inertia ixx="0.046918" ixy="0.000013" ixz="0.000449" iyy="0.007785" iyz="0.0" izz="0.0048142"/>
+            <origin rpy="0 0 0" xyz="0.031355 0 0.033229"/>
+            <mass value="4.509446"/>
+            <inertia ixx="0.048788" ixy="0.000009" ixz="0.004549" iyy="0.017194" iyz="-0.000008" izz="0.047451"/>
+        </inertial>
+    </link>
+
+    <joint name="waist_yaw_joint" type="revolute">
+        <origin rpy="0 0 0" xyz="0.065 0.0 0.096"/>
+        <parent link="Pelvis"/>
+        <child link="Torso"/>
+        <axis xyz="0 0 1"/>
+        <dynamics rotor_inertia="0.0724" damping="0" friction="0"/>
+        <limit effort="360.0" velocity="10.0" lower="-1.570796" upper="1.570796"/>
+    </joint>
+    <link name="Torso">
+        <visual>
+            <origin rpy="0 0 0" xyz="0 0 0.0"/>
+            <geometry>
+                <mesh filename="URDF_Torso.dae" scale="1 1 1"/>
+            </geometry>
+            <material name="grey"/>
+        </visual>
+        <collision>
+            <origin rpy="0 0 0" xyz="0 0 0.2582"/>
+            <geometry>
+                <box size="0.14 0.242 0.374"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <origin rpy="0 0 0" xyz="-0.000571 -0.275 0.192648"/>
+            <mass value="10.742786"/>
+            <inertia ixx="0.587282" ixy="0.000133" ixz="0.001513" iyy="0.558291" iyz="-0.000890" izz="0.069820"/>
         </inertial>
     </link>
 
     <joint name="L_hip_yaw_joint" type="revolute">
-        <origin rpy="0 0 0" xyz="0.0 0.1 -0.0492"/>
+        <origin rpy="0 0.785398 0" xyz="0.0 0.1 0.0"/>
         <parent link="Pelvis"/>
         <child link="L_Hip"/>
         <axis xyz="0 0 1"/>
         <dynamics rotor_inertia="0.0724" damping="0" friction="0"/>
-        <limit effort="360.0" velocity="10.0" lower="-0.785398" upper="1.57079632679"/>
+        <limit effort="360.0" velocity="10.0" lower="-1.570796" upper="1.570796"/>
     </joint>
     <link name="L_Hip">
         <visual>
             <origin rpy="0 0 0" xyz="0 0 0"/>
             <geometry>
-                <mesh filename="Hip.dae" scale="1 1 1"/>
+                <mesh filename="URDF_Hip.dae" scale="1 1 1"/>
             </geometry>
             <material name="grey"/>
         </visual>
         <collision>
-            <origin rpy="0 1.57079632679 0" xyz="0 0 -0.07"/>
+            <origin rpy="0 1.570796 0" xyz="0 0 -0.07"/>
             <geometry>
                 <cylinder radius="0.06" length="0.08"/>
             </geometry>
         </collision>
         <inertial>
-            <origin rpy="0 0 0" xyz="0.010407 0.00004 -0.066062"/>
-            <mass value="2.204506"/>
-            <inertia ixx="0.013818" ixy="0.000008" ixz="-0.001448" iyy="0.013243" iyz="-0.000007" izz="0.003344"/>
+            <origin rpy="0 0 0" xyz="0.005763 0.000041 -0.057716"/>
+            <mass value="2.157752"/>
+            <inertia ixx="0.012282" ixy="0.000006" ixz="-0.000712" iyy="0.011468" iyz="-0.000006" izz="0.003050"/>
         </inertial>
     </link>
 
@@ -83,49 +112,49 @@
         <child link="L_Hip_to_Thigh"/>
         <axis xyz="1 0 0"/>
         <dynamics rotor_inertia="0.0724" damping="0" friction="0"/>
-        <limit effort="360.0" velocity="10.0" lower="-0.349066" upper="0.785398"/>
+        <limit effort="360.0" velocity="10.0" lower="-1.570796" upper="1.570796"/>
     </joint>
     <link name="L_Hip_to_Thigh">
         <visual>
             <origin rpy="0 0 0" xyz="0 0 0"/>
             <geometry>
-                <mesh filename="Hip_to_Thigh.dae" scale="1 1 1"/>
+                <mesh filename="URDF_Hip_to_Thigh_Left.dae" scale="1 1 1"/>
             </geometry>
             <material name="grey"/>
         </visual>
         <collision>
-            <origin rpy="1.57079632679 0 0" xyz="0.096 0.005 0"/>
+            <origin rpy="1.570796 0 0" xyz="0.096 0.05 0"/>
             <geometry>
-                <cylinder radius="0.09" length="0.1"/>
+                <cylinder radius="0.09" length="0.19"/>
             </geometry>
         </collision>
         <inertial>
-            <origin rpy="0 0 0" xyz="0.038459 -0.034907 0.0"/>
-            <mass value="0.260453"/>
-            <inertia ixx="0.000662" ixy="-0.000480" ixz="-0.000001" iyy="0.000964" iyz="-0.000001" izz="0.001216"/>
+            <origin rpy="0 0 0" xyz="0.036558 -0.022079 0.000000"/>
+            <mass value="0.794453"/>
+            <inertia ixx="0.001546" ixy="-0.001300" ixz="-0.000003" iyy="0.003675" iyz="-0.000001" izz="0.004089"/>
         </inertial>
     </link>
 
     <joint name="L_hip_pitch_joint" type="revolute">
-        <origin rpy="0 0 0" xyz="0.096 -0.0451 0"/>
+        <origin rpy="0 -0.785398 0" xyz="0.096 -0.0451 0"/>
         <parent link="L_Hip_to_Thigh"/>
         <child link="L_Thigh"/>
         <axis xyz="0 1 0"/>
         <dynamics rotor_inertia="0.3608" damping="0" friction="0"/>
-        <limit effort="600.0" velocity="10.0" lower="-1.57079632679" upper="1.57079632679"/>
+        <limit effort="600.0" velocity="10.0" lower="-1.570796" upper="1.570796"/>
     </joint>
     <link name="L_Thigh">
         <visual>
             <origin rpy="0 0 0" xyz="0 0 0"/>
             <geometry>
-                <mesh filename="Thigh.dae" scale="1 1 1"/>
+                <mesh filename="URDF_Thigh_Left.dae" scale="1 1 1"/>
             </geometry>
             <material name="grey"/>
         </visual>
         <inertial>
-            <origin rpy="0 0 0" xyz="-0.001634 0.085634 -0.046218"/>
-            <mass value="6.727728"/>
-            <inertia ixx="0.162785" ixy="-0.001743" ixz="0.001495" iyy="0.105165" iyz="-0.046141" izz="0.078287"/>
+            <origin rpy="0 0 0" xyz="0.000997 0.092833 -0.049785"/>
+            <mass value="7.063633"/>
+            <inertia ixx="0.187943" ixy="0.000975" ixz="-0.000944" iyy="0.118972" iyz="-0.052278" izz="0.091682"/>
         </inertial>
     </link>
 
@@ -134,14 +163,14 @@
         <parent link="L_Thigh"/>
         <child link="L_Calf"/>
         <axis xyz="0 1 0"/>
-        <dynamics damping="0" friction="0"/>
-        <limit lower="0.0872665" upper="2.35619"/>
+        <dynamics rotor_inertia="0.3608" damping="0" friction="0"/>
+        <limit effort="600.0" velocity="10.0" lower="0.0872665" upper="2.35619"/>
     </joint>
     <link name="L_Calf">
         <visual>
             <origin rpy="0 0 0" xyz="0 0 0"/>
             <geometry>
-                <mesh filename="Calf.dae" scale="1 1 1"/>
+                <mesh filename="URDF_Calf_Left.dae" scale="1 1 1"/>
             </geometry>
             <material name="grey"/>
         </visual>
@@ -152,9 +181,9 @@
             </geometry>
         </collision>
         <inertial>
-            <origin rpy="0 0 0" xyz="-0.005214 0.000006 -0.145234"/>
-            <mass value="3.386071"/>
-            <inertia ixx="0.102883" ixy="0.000001" ixz="0.002760" iyy="0.105686" iyz="-0.000764" izz="0.004473"/>
+            <origin rpy="0 0 0" xyz="-0.006344 -0.000266 -0.163284"/>
+            <mass value="4.005008"/>
+            <inertia ixx="0.155373" ixy="-0.000032" ixz="0.007138" iyy="0.158280" iyz="-0.001348" izz="0.006546"/>
         </inertial>
     </link>
 
@@ -163,21 +192,21 @@
         <parent link="L_Calf"/>
         <child link="L_Universal"/>
         <axis xyz="0 1 0"/>
-        <dynamics damping="0" friction="0"/>
-        <limit lower="-0.872665" upper="0.698132"/>
+        <dynamics rotor_inertia="0.0724" damping="0" friction="0"/>
+        <limit effort="360.0" velocity="10.0" lower="-0.872665" upper="0.698132"/>
     </joint>
     <link name="L_Universal">
         <visual>
             <origin rpy="0 0 0" xyz="0 0 0"/>
             <geometry>
-                <mesh filename="Ankle_Universal.dae" scale="1 1 1"/>
+                <mesh filename="URDF_Universal.dae" scale="1 1 1"/>
             </geometry>
             <material name="grey"/>
         </visual>
         <inertial>
-            <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
+            <origin rpy="0 0 0" xyz="0.000000 0.000000 0.000000"/>
             <mass value="0.209567"/>
-            <inertia ixx="0.000048" ixy="0.0" ixz="0.0" iyy="0.000089" iyz="0.0" izz="0.000124"/>
+            <inertia ixx="0.000048" ixy="0.000000" ixz="0.000000" iyy="0.000089" iyz="0.000000" izz="0.000124"/>
         </inertial>
     </link>
 
@@ -186,14 +215,14 @@
         <parent link="L_Universal"/>
         <child link="L_Foot"/>
         <axis xyz="1 0 0"/>
-        <dynamics damping="0" friction="0"/>
-        <limit lower="-0.523599" upper="0.523599"/>
+        <dynamics rotor_inertia="0.0724" damping="0" friction="0"/>
+        <limit effort="360.0" velocity="10.0" lower="-0.523599" upper="0.523599"/>
     </joint>
     <link name="L_Foot">
         <visual>
             <origin rpy="0 0 0" xyz="0 0 0"/>
             <geometry>
-                <mesh filename="Foot.dae" scale="1 1 1"/>
+                <mesh filename="URDF_Foot.dae" scale="1 1 1"/>
             </geometry>
             <material name="grey"/>
         </visual>
@@ -216,218 +245,38 @@
                 </geometry>
             </collision>
         <inertial>
-            <origin rpy="0 0 0" xyz="0.004829 -0.00002 -0.035655"/>
+            <origin rpy="0 0 0" xyz="0.004829 -0.000020 -0.035655"/>
             <mass value="0.571816"/>
-            <inertia ixx="0.001485" ixy="0.000001" ixz="-0.000942" iyy="0.003882" iyz="0.0" izz="0.002841"/>
-        </inertial>
-    </link>
-
-    <joint name="L_heel_pitch_left_joint" type="revolute">
-        <origin rpy="0 0 0" xyz="-0.06401 0.04 0.01129"/>
-        <parent link="L_Foot"/>
-        <child link="L_Heel_Pitch_Left"/>
-        <axis xyz="0 1 0"/>
-        <dynamics damping="0" friction="0"/>
-    </joint>
-    <link name="L_Heel_Pitch_Left">
-        <visual>
-            <origin rpy="0 0 0" xyz="0 0 0"/>
-            <geometry>
-                <mesh filename="Heel_Pitch.dae" scale="1 1 1"/>
-            </geometry>
-            <material name="grey"/>
-        </visual>
-        <inertial>
-            <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
-            <mass value="0.046696"/>
-            <inertia ixx="0.00002" ixy="0.0" ixz="0.0" iyy="0.000005" iyz="0.0" izz="0.000005"/>
-        </inertial>
-    </link>
-
-    <joint name="L_heel_roll_left_joint" type="revolute">
-        <origin rpy="0 0 0" xyz="0 0 0"/>
-        <parent link="L_Heel_Pitch_Left"/>
-        <child link="L_Heel_Roll_Left"/>
-        <axis xyz="1 0 0"/>
-        <dynamics damping="0" friction="0"/>
-    </joint>
-    <link name="L_Heel_Roll_Left">
-        <visual>
-            <origin rpy="0 0 0" xyz="0 0 0"/>
-            <geometry>
-                <mesh filename="Ankle_Link_Short.dae" scale="1 1 1"/>
-            </geometry>
-            <material name="grey"/>
-        </visual>
-        <inertial>
-            <origin rpy="0 0 0" xyz="0.000024 0.0 0.087387"/>
-            <mass value="0.116743"/>
-            <inertia ixx="0.001566" ixy="0.0" ixz="0.0" iyy="0.001571" iyz="0.0" izz="0.000009"/>
-        </inertial>
-    </link>
-
-    <joint name="L_heel_pitch_right_joint" type="revolute">
-        <origin rpy="0 0 0" xyz="-0.06401 -0.04 0.01129"/>
-        <parent link="L_Foot"/>
-        <child link="L_Heel_Pitch_Right"/>
-        <axis xyz="0 1 0"/>
-        <dynamics damping="0" friction="0"/>
-    </joint>
-    <link name="L_Heel_Pitch_Right">
-        <visual>
-            <origin rpy="0 0 0" xyz="0 0 0"/>
-            <geometry>
-                <mesh filename="Heel_Pitch.dae" scale="1 1 1"/>
-            </geometry>
-            <material name="grey"/>
-        </visual>
-        <inertial>
-            <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
-            <mass value="0.046696"/>
-            <inertia ixx="0.00002" ixy="0.0" ixz="0.0" iyy="0.000005" iyz="0.0" izz="0.000005"/>
-        </inertial>
-    </link>
-
-    <joint name="L_heel_roll_right_joint" type="revolute">
-        <origin rpy="0 0 0" xyz="0 0 0"/>
-        <parent link="L_Heel_Pitch_Right"/>
-        <child link="L_Heel_Roll_Right"/>
-        <axis xyz="1 0 0"/>
-        <dynamics damping="0" friction="0"/>
-    </joint>
-    <link name="L_Heel_Roll_Right">
-        <visual>
-            <origin rpy="0 0 0" xyz="0 0 0"/>
-            <geometry>
-                <mesh filename="Ankle_Link_Long.dae" scale="1 1 1"/>
-            </geometry>
-            <material name="grey"/>
-        </visual>
-        <inertial>
-            <origin rpy="0 0 0" xyz="0.00002 0.0 0.143108"/>
-            <mass value="0.144226"/>
-            <inertia ixx="0.005069" ixy="0.0" ixz="0.0" iyy="0.005074" iyz="0.0" izz="0.000009"/>
-        </inertial>
-    </link>
-
-
-    <joint name="L_ankle_input_left_joint" type="revolute">
-        <origin rpy="0 0 0" xyz="-0.008 0.0255 -0.20464"/>
-        <parent link="L_Calf"/>
-        <child link="L_Ankle_Input_Left"/>
-        <axis xyz="0 1 0"/>
-        <dynamics rotor_inertia="0.023168" damping="0" friction="0"/>
-        <limit effort="150.0" velocity="10.0"/>
-    </joint>
-    <link name="L_Ankle_Input_Left">
-        <visual>
-            <origin rpy="0 0 0" xyz="0 0 0"/>
-            <geometry>
-                <mesh filename="Ankle_Link_Input.dae" scale="1 1 1"/>
-            </geometry>
-            <material name="grey"/>
-        </visual>
-        <inertial>
-            <origin rpy="0 0 0" xyz="0.02255 0.012714 -0.001469"/>
-            <mass value="0.132288"/>
-            <inertia ixx="0.000048" ixy="0.000048" ixz="0.0" iyy="0.00017" iyz="-0.000004" izz="0.000187"/>
-        </inertial>
-    </link>
-
-    <joint name="L_ankle_input_right_joint" type="revolute">
-        <origin rpy="0 0 0" xyz="-0.008 -0.0255 -0.08964"/>
-        <parent link="L_Calf"/>
-        <child link="L_Ankle_Input_Right"/>
-        <axis xyz="0 1 0"/>
-        <dynamics rotor_inertia="0.023168" damping="0" friction="0"/>
-        <limit effort="150.0" velocity="10.0"/>
-    </joint>
-    <link name="L_Ankle_Input_Right">
-        <visual>
-            <origin rpy="0 0 0" xyz="0 0 0"/>
-            <geometry>
-                <mesh filename="Ankle_Link_Input_mir.dae" scale="1 1 1"/>
-            </geometry>
-            <material name="grey"/>
-        </visual>
-        <inertial>
-            <origin rpy="0 0 0" xyz="0.02255 -0.012714 -0.001469"/>
-            <mass value="0.132288"/>
-            <inertia ixx="0.000048" ixy="-0.000048" ixz="0.0" iyy="0.00017" iyz="0.000004" izz="0.000187"/>
-        </inertial>
-    </link>
-
-    <joint name="L_knee_input_joint" type="revolute">
-        <origin rpy="0 0 0" xyz="0 0.1342 0"/>
-        <parent link="L_Thigh"/>
-        <child link="L_Knee_Input"/>
-        <axis xyz="0 1 0"/>
-        <dynamics damping="0" friction="0"/>
-        <limit effort="600.0" velocity="10.0"/>
-    </joint>
-    <link name="L_Knee_Input">
-        <visual>
-            <origin rpy="0 0 0" xyz="0 0 0"/>
-            <geometry>
-                <mesh filename="Knee_Link_Input.dae" scale="1 1 1"/>
-            </geometry>
-            <material name="grey"/>
-        </visual>
-        <inertial>
-            <origin rpy="0 0 0" xyz="0.017352 0.017440 -0.000053"/>
-            <mass value="0.335783"/>
-            <inertia ixx="0.000254" ixy="0.000096" ixz="0.000002" iyy="0.000514" iyz="0.0" izz="0.000574"/>
-        </inertial>
-    </link>
-
-    <joint name="L_knee_link_joint" type="revolute">
-        <origin rpy="0 0 0" xyz="0.06 0.0165 0"/>
-        <parent link="L_Knee_Input"/>
-        <child link="L_Knee_Link"/>
-        <axis xyz="0 1 0"/>
-        <dynamics damping="0" friction="0"/>
-    </joint>
-    <link name="L_Knee_Link">
-        <visual>
-            <origin rpy="0 0 0" xyz="0 0 0"/>
-            <geometry>
-                <mesh filename="Knee_Link.dae" scale="1 1 1"/>
-            </geometry>
-            <material name="grey"/>
-        </visual>
-        <inertial>
-            <origin rpy="0 0 0" xyz="0.0 -0.000002 -0.2"/>
-            <mass value="0.203531"/>
-            <inertia ixx="0.012837" ixy="0.0" ixz="0.0" iyy="0.012848" iyz="0.0" izz="0.000018"/>
+            <inertia ixx="0.001485" ixy="0.000001" ixz="-0.000942" iyy="0.003882" iyz="0.000000" izz="0.002841"/>
         </inertial>
     </link>
 
     <joint name="R_hip_yaw_joint" type="revolute">
-        <origin rpy="0 0 0" xyz="0.0 -0.1 -0.0492"/>
+        <origin rpy="0 0.785398 0" xyz="0.0 -0.1 0"/>
         <parent link="Pelvis"/>
         <child link="R_Hip"/>
         <axis xyz="0 0 1"/>
         <dynamics rotor_inertia="0.0724" damping="0" friction="0"/>
-        <limit effort="360.0" velocity="10.0" lower="-0.785398" upper="1.57079632679"/>
+        <limit effort="360.0" velocity="10.0" lower="-1.570796" upper="1.570796"/>
     </joint>
     <link name="R_Hip">
         <visual>
             <origin rpy="0 0 0" xyz="0 0 0"/>
             <geometry>
-                <mesh filename="Hip.dae" scale="1 1 1"/>
+                <mesh filename="URDF_Hip.dae" scale="1 1 1"/>
             </geometry>
             <material name="grey"/>
         </visual>
         <collision>
-            <origin rpy="0 1.57079632679 0" xyz="0 0 -0.07"/>
+            <origin rpy="0 1.570796 0" xyz="0 0 -0.07"/>
             <geometry>
                 <cylinder radius="0.06" length="0.08"/>
             </geometry>
         </collision>
         <inertial>
-            <origin rpy="0 0 0" xyz="0.010407 0.00004 -0.066062"/>
-            <mass value="2.204506"/>
-            <inertia ixx="0.013818" ixy="0.000008" ixz="-0.001448" iyy="0.013243" iyz="-0.000007" izz="0.003344"/>
+            <origin rpy="0 0 0" xyz="0.005763 0.000041 -0.057716"/>
+            <mass value="2.157752"/>
+            <inertia ixx="0.012282" ixy="0.000006" ixz="-0.000712" iyy="0.011468" iyz="-0.000006" izz="0.003050"/>
         </inertial>
     </link>
 
@@ -437,49 +286,49 @@
         <child link="R_Hip_to_Thigh"/>
         <axis xyz="1 0 0"/>
         <dynamics rotor_inertia="0.0724" damping="0" friction="0"/>
-        <limit effort="360.0" velocity="10.0" lower="-0.349066" upper="0.785398"/>
+        <limit effort="360.0" velocity="10.0" lower="-1.570796" upper="1.570796"/>
     </joint>
     <link name="R_Hip_to_Thigh">
         <visual>
             <origin rpy="0 0 0" xyz="0 0 0"/>
             <geometry>
-                <mesh filename="Hip_to_Thigh_mir.dae" scale="1 1 1"/>
+                <mesh filename="URDF_Hip_to_Thigh_Right.dae" scale="1 1 1"/>
             </geometry>
             <material name="grey"/>
         </visual>
         <collision>
-            <origin rpy="1.57079632679 0 0" xyz="0.096 0.005 0"/>
+            <origin rpy="1.570796 0 0" xyz="0.096 -0.05 0"/>
             <geometry>
-                <cylinder radius="0.09" length="0.1"/>
+                <cylinder radius="0.09" length="0.19"/>
             </geometry>
         </collision>
         <inertial>
-            <origin rpy="0 0 0" xyz="0.038459 0.034907 0.0"/>
-            <mass value="0.260453"/>
-            <inertia ixx="0.000662" ixy="0.000480" ixz="0.000001" iyy="0.000964" iyz="-0.000001" izz="0.001216"/>
+            <origin rpy="0 0 0" xyz="0.036558 0.022079 0.000000"/>
+            <mass value="0.794453"/>
+            <inertia ixx="0.001546" ixy="0.001300" ixz="-0.000003" iyy="0.003675" iyz="0.000001" izz="0.004089"/>
         </inertial>
     </link>
 
     <joint name="R_hip_pitch_joint" type="revolute">
-        <origin rpy="0 0 0" xyz="0.096 0.0451 0"/>
+        <origin rpy="0 -0.785398 0" xyz="0.096 0.0451 0"/>
         <parent link="R_Hip_to_Thigh"/>
         <child link="R_Thigh"/>
         <axis xyz="0 1 0"/>
         <dynamics rotor_inertia="0.3608" damping="0" friction="0"/>
-        <limit effort="600.0" velocity="10.0" lower="-1.57079632679" upper="1.57079632679"/>
+        <limit effort="600.0" velocity="10.0" lower="-1.570796" upper="1.570796"/>
     </joint>
     <link name="R_Thigh">
         <visual>
             <origin rpy="0 0 0" xyz="0 0 0"/>
             <geometry>
-                <mesh filename="Thigh_mir.dae" scale="1 1 1"/>
+                <mesh filename="URDF_Thigh_Right.dae" scale="1 1 1"/>
             </geometry>
             <material name="grey"/>
         </visual>
         <inertial>
-            <origin rpy="0 0 0" xyz="-0.001634 -0.085634 -0.046218"/>
-            <mass value="6.727728"/>
-            <inertia ixx="0.162785" ixy="0.001743" ixz="0.001495" iyy="0.105165" iyz="0.046141" izz="0.078287"/>
+            <origin rpy="0 0 0" xyz="0.000997 -0.092833 -0.049785"/>
+            <mass value="7.063633"/>
+            <inertia ixx="0.187943" ixy="-0.000975" ixz="-0.000944" iyy="0.118972" iyz="0.052278" izz="0.091682"/>
         </inertial>
     </link>
 
@@ -488,14 +337,14 @@
         <parent link="R_Thigh"/>
         <child link="R_Calf"/>
         <axis xyz="0 1 0"/>
-        <dynamics damping="0" friction="0"/>
-        <limit lower="0.0872665" upper="2.35619"/>
+        <dynamics rotor_inertia="0.3608" damping="0" friction="0"/>
+        <limit effort="600.0" velocity="10.0" lower="0.0872665" upper="2.35619"/>
     </joint>
     <link name="R_Calf">
         <visual>
             <origin rpy="0 0 0" xyz="0 0 0"/>
             <geometry>
-                <mesh filename="Calf_mir.dae" scale="1 1 1"/>
+                <mesh filename="URDF_Calf_Right.dae" scale="1 1 1"/>
             </geometry>
             <material name="grey"/>
         </visual>
@@ -506,9 +355,9 @@
             </geometry>
         </collision>
         <inertial>
-            <origin rpy="0 0 0" xyz="-0.005214 -0.000006 -0.145234"/>
-            <mass value="3.386071"/>
-            <inertia ixx="0.102883" ixy="-0.000001" ixz="0.002760" iyy="0.105686" iyz="0.000764" izz="0.004473"/>
+            <origin rpy="0 0 0" xyz="-0.006344 0.000266 -0.163284"/>
+            <mass value="4.005008"/>
+            <inertia ixx="0.155373" ixy="0.000032" ixz="0.007138" iyy="0.158280" iyz="0.001348" izz="0.006546"/>
         </inertial>
     </link>
 
@@ -517,21 +366,21 @@
         <parent link="R_Calf"/>
         <child link="R_Universal"/>
         <axis xyz="0 1 0"/>
-        <dynamics damping="0" friction="0"/>
-        <limit lower="-0.872665" upper="0.698132"/>
+        <dynamics rotor_inertia="0.0724" damping="0" friction="0"/>
+        <limit effort="360.0" velocity="10.0" lower="-0.872665" upper="0.698132"/>
     </joint>
     <link name="R_Universal">
         <visual>
             <origin rpy="0 0 0" xyz="0 0 0"/>
             <geometry>
-                <mesh filename="Ankle_Universal.dae" scale="1 1 1"/>
+                <mesh filename="URDF_Universal.dae" scale="1 1 1"/>
             </geometry>
             <material name="grey"/>
         </visual>
         <inertial>
-            <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
+            <origin rpy="0 0 0" xyz="0.000000 0.000000 0.000000"/>
             <mass value="0.209567"/>
-            <inertia ixx="0.000048" ixy="0.0" ixz="0.0" iyy="0.000089" iyz="0.0" izz="0.000124"/>
+            <inertia ixx="0.000048" ixy="0.000000" ixz="0.000000" iyy="0.000089" iyz="0.000000" izz="0.000124"/>
         </inertial>
     </link>
 
@@ -540,257 +389,40 @@
         <parent link="R_Universal"/>
         <child link="R_Foot"/>
         <axis xyz="1 0 0"/>
-        <dynamics damping="0" friction="0"/>
-        <limit lower="-0.523599" upper="0.523599"/>
+        <dynamics rotor_inertia="0.0724" damping="0" friction="0"/>
+        <limit effort="360.0" velocity="10.0" lower="-0.523599" upper="0.523599"/>
     </joint>
     <link name="R_Foot">
         <visual>
             <origin rpy="0 0 0" xyz="0 0 0"/>
             <geometry>
-                <mesh filename="Foot.dae" scale="1 1 1"/>
+                <mesh filename="URDF_Foot.dae" scale="1 1 1"/>
             </geometry>
             <material name="grey"/>
         </visual>
-        <collision>
-            <origin rpy="0 0 0" xyz="0.065 0 -0.07"/>
-            <geometry>
-                <box size="0.18 0.08 0.02"/>
-            </geometry>
-        </collision>
-        <collision>
-            <origin rpy="0 0 0" xyz="0.155 0 -0.07"/>
-            <geometry>
-                <cylinder length="0.02" radius="0.04"/>
-            </geometry>
-        </collision>
-        <collision>
-            <origin rpy="0 0 0" xyz="-0.025 0 -0.07"/>
-            <geometry>
-                <cylinder length="0.02" radius="0.04"/>
-            </geometry>
-        </collision>
+            <collision>
+                <origin rpy="0 0 0" xyz="0.065 0 -0.07"/>
+                <geometry>
+                    <box size="0.18 0.08 0.02"/>
+                </geometry>
+            </collision>
+            <collision>
+                <origin rpy="0 0 0" xyz="0.155 0 -0.07"/>
+                <geometry>
+                    <cylinder length="0.02" radius="0.04"/>
+                </geometry>
+            </collision>
+            <collision>
+                <origin rpy="0 0 0" xyz="-0.025 0 -0.07"/>
+                <geometry>
+                    <cylinder length="0.02" radius="0.04"/>
+                </geometry>
+            </collision>
         <inertial>
-            <origin rpy="0 0 0" xyz="0.004829 -0.00002 -0.035655"/>
+            <origin rpy="0 0 0" xyz="0.004829 -0.000020 -0.035655"/>
             <mass value="0.571816"/>
-            <inertia ixx="0.001485" ixy="0.000001" ixz="-0.000942" iyy="0.003882" iyz="0.0" izz="0.002841"/>
+            <inertia ixx="0.001485" ixy="0.000001" ixz="-0.000942" iyy="0.003882" iyz="0.000000" izz="0.002841"/>
         </inertial>
     </link>
 
-    <joint name="R_heel_pitch_left_joint" type="revolute">
-        <origin rpy="0 0 0" xyz="-0.06401 0.04 0.01129"/>
-        <parent link="R_Foot"/>
-        <child link="R_Heel_Pitch_Left"/>
-        <axis xyz="0 1 0"/>
-        <dynamics damping="0" friction="0"/>
-    </joint>
-    <link name="R_Heel_Pitch_Left">
-        <visual>
-            <origin rpy="0 0 0" xyz="0 0 0"/>
-            <geometry>
-                <mesh filename="Heel_Pitch.dae" scale="1 1 1"/>
-            </geometry>
-            <material name="grey"/>
-        </visual>
-        <inertial>
-            <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
-            <mass value="0.046696"/>
-            <inertia ixx="0.00002" ixy="0.0" ixz="0.0" iyy="0.000005" iyz="0.0" izz="0.000005"/>
-        </inertial>
-    </link>
-
-    <joint name="R_heel_roll_left_joint" type="revolute">
-        <origin rpy="0 0 0" xyz="0 0 0"/>
-        <parent link="R_Heel_Pitch_Left"/>
-        <child link="R_Heel_Roll_Left"/>
-        <axis xyz="1 0 0"/>
-        <dynamics damping="0" friction="0"/>
-    </joint>
-    <link name="R_Heel_Roll_Left">
-        <visual>
-            <origin rpy="0 0 0" xyz="0 0 0"/>
-            <geometry>
-                <mesh filename="Ankle_Link_Long.dae" scale="1 1 1"/>
-            </geometry>
-            <material name="grey"/>
-        </visual>
-        <inertial>
-            <origin rpy="0 0 0" xyz="0.00002 0.0 0.143108"/>
-            <mass value="0.144226"/>
-            <inertia ixx="0.005069" ixy="0.0" ixz="0.0" iyy="0.005074" iyz="0.0" izz="0.000009"/>
-        </inertial>
-    </link>
-
-    <joint name="R_heel_pitch_right_joint" type="revolute">
-        <origin rpy="0 0 0" xyz="-0.06401 -0.04 0.01129"/>
-        <parent link="R_Foot"/>
-        <child link="R_Heel_Pitch_Right"/>
-        <axis xyz="0 1 0"/>
-        <dynamics damping="0" friction="0"/>
-    </joint>
-    <link name="R_Heel_Pitch_Right">
-        <visual>
-            <origin rpy="0 0 0" xyz="0 0 0"/>
-            <geometry>
-                <mesh filename="Heel_Pitch.dae" scale="1 1 1"/>
-            </geometry>
-            <material name="grey"/>
-        </visual>
-        <inertial>
-            <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
-            <mass value="0.046696"/>
-            <inertia ixx="0.00002" ixy="0.0" ixz="0.0" iyy="0.000005" iyz="0.0" izz="0.000005"/>
-        </inertial>
-    </link>
-
-    <joint name="R_heel_roll_right_joint" type="revolute">
-        <origin rpy="0 0 0" xyz="0 0 0"/>
-        <parent link="R_Heel_Pitch_Right"/>
-        <child link="R_Heel_Roll_Right"/>
-        <axis xyz="1 0 0"/>
-        <dynamics damping="0" friction="0"/>
-    </joint>
-    <link name="R_Heel_Roll_Right">
-        <visual>
-            <origin rpy="0 0 0" xyz="0 0 0"/>
-            <geometry>
-                <mesh filename="Ankle_Link_Short.dae" scale="1 1 1"/>
-            </geometry>
-            <material name="grey"/>
-        </visual>
-        <inertial>
-            <origin rpy="0 0 0" xyz="0.000024 0.0 0.087387"/>
-            <mass value="0.116743"/>
-            <inertia ixx="0.001566" ixy="0.0" ixz="0.0" iyy="0.001571" iyz="0.0" izz="0.000009"/>
-        </inertial>
-    </link>
-
-    <joint name="R_ankle_input_left_joint" type="revolute">
-        <origin rpy="0 0 0" xyz="-0.008 0.0255 -0.08964"/>
-        <parent link="R_Calf"/>
-        <child link="R_Ankle_Input_Left"/>
-        <axis xyz="0 1 0"/>
-        <dynamics rotor_inertia="0.023168" damping="0" friction="0"/>
-        <limit effort="150.0" velocity="10.0"/>
-    </joint>
-    <link name="R_Ankle_Input_Left">
-        <visual>
-            <origin rpy="0 0 0" xyz="0 0 0"/>
-            <geometry>
-                <mesh filename="Ankle_Link_Input.dae" scale="1 1 1"/>
-            </geometry>
-            <material name="grey"/>
-        </visual>
-        <inertial>
-            <origin rpy="0 0 0" xyz="0.02255 0.012714 -0.001469"/>
-            <mass value="0.132288"/>
-            <inertia ixx="0.000048" ixy="0.000048" ixz="0.0" iyy="0.00017" iyz="-0.000004" izz="0.000187"/>
-        </inertial>
-    </link>
-
-    <joint name="R_ankle_input_right_joint" type="revolute">
-        <origin rpy="0 0 0" xyz="-0.008 -0.0255 -0.20464"/>
-        <parent link="R_Calf"/>
-        <child link="R_Ankle_Input_Right"/>
-        <axis xyz="0 1 0"/>
-        <dynamics rotor_inertia="0.023168" damping="0" friction="0"/>
-        <limit effort="150.0" velocity="10.0"/>
-    </joint>
-    <link name="R_Ankle_Input_Right">
-        <visual>
-            <origin rpy="0 0 0" xyz="0 0 0"/>
-            <geometry>
-                <mesh filename="Ankle_Link_Input_mir.dae" scale="1 1 1"/>
-            </geometry>
-            <material name="grey"/>
-        </visual>
-        <inertial>
-            <origin rpy="0 0 0" xyz="0.02255 -0.012714 -0.001469"/>
-            <mass value="0.132288"/>
-            <inertia ixx="0.000048" ixy="-0.000048" ixz="0.0" iyy="0.00017" iyz="0.000004" izz="0.000187"/>
-        </inertial>
-    </link>
-
-    <joint name="R_knee_input_joint" type="revolute">
-        <origin rpy="0 0 0" xyz="0 -0.1342 0"/>
-        <parent link="R_Thigh"/>
-        <child link="R_Knee_Input"/>
-        <axis xyz="0 1 0"/>
-        <dynamics damping="0" friction="0"/>
-        <limit effort="600.0" velocity="10.0"/>
-    </joint>
-    <link name="R_Knee_Input">
-        <visual>
-            <origin rpy="0 0 0" xyz="0 0 0"/>
-            <geometry>
-                <mesh filename="Knee_Link_Input_mir.dae" scale="1 1 1"/>
-            </geometry>
-            <material name="grey"/>
-        </visual>
-        <inertial>
-            <origin rpy="0 0 0" xyz="0.017352 -0.017440 -0.000053"/>
-            <mass value="0.335783"/>
-            <inertia ixx="0.000254" ixy="-0.000096" ixz="0.000002" iyy="0.000514" iyz="0.0" izz="0.000574"/>
-        </inertial>
-    </link>
-
-    <joint name="R_knee_link_joint" type="revolute">
-        <origin rpy="0 0 0" xyz="0.06 -0.0165 0"/>
-        <parent link="R_Knee_Input"/>
-        <child link="R_Knee_Link"/>
-        <axis xyz="0 1 0"/>
-        <dynamics damping="0" friction="0"/>
-    </joint>
-    <link name="R_Knee_Link">
-        <visual>
-            <origin rpy="0 0 0" xyz="0 0 0"/>
-            <geometry>
-                <mesh filename="Knee_Link.dae" scale="1 1 1"/>
-            </geometry>
-            <material name="grey"/>
-        </visual>
-        <inertial>
-            <origin rpy="0 0 0" xyz="0.0 -0.000002 -0.2"/>
-            <mass value="0.203531"/>
-            <inertia ixx="0.012837" ixy="0.0" ixz="0.0" iyy="0.012848" iyz="0.0" izz="0.000018"/>
-        </inertial>
-    </link>
-
-    <joint name="waist_yaw_joint" type="revolute">
-        <origin rpy="0 0 0" xyz="0.04 0.0 0.052"/>
-        <parent link="Pelvis"/>
-        <child link="Torso"/>
-        <axis xyz="0 0 1"/>
-        <dynamics rotor_inertia="0.0724" damping="0" friction="0"/>
-        <limit effort="360.0" velocity="10.0" lower="-1.57080" upper="1.57080"/>
-    </joint>
-    <link name="Torso">
-        <visual>
-            <origin rpy="0 0 0" xyz="0 0 0.0"/>
-            <geometry>
-                <mesh filename="Torso.dae" scale="1 1 1"/>
-            </geometry>
-            <material name="grey"/>
-        </visual>
-        <collision>
-            <origin rpy="0 0 0" xyz="0 0 0.2582"/>
-            <geometry>
-                <box size="0.14 0.242 0.374"/>
-            </geometry>
-        </collision>
-        <inertial>
-            <origin rpy="0 0 0" xyz="-0.000572 -0.000263 0.190711"/>
-            <mass value="10.860955"/>
-            <inertia ixx="0.587413" ixy="0.000116" ixz="0.001486" iyy="0.558421" iyz="-0.000878" izz="0.070026"/>
-        </inertial>
-    </link>
-
-    <constraints nominal_config="0.0 0.0 1.0 1.0 0.0 0.0 0.0     0.0 0.0 -0.349066 0.3409066 0.0 0.0     0.608073 0.00261799 0.386241 -0.00157080 0.550826 0.269130 -0.872665 0.872665     0.0 0.0 -0.349066 0.3409066 0.0 0.0     0.386241 -0.00157080 0.608073 0.00261799 0.269130 0.550826 -0.872665 0.872665">
-        <pin body1="L_Calf" body2="L_Knee_Link" anchor="0.0205212 0.0 0.0563816"/>
-        <pin body1="L_Ankle_Input_Left" body2="L_Heel_Roll_Left" anchor="0.065 0.015 0.0"/>
-        <pin body1="L_Ankle_Input_Right" body2="L_Heel_Roll_Right" anchor="0.065 -0.015 0.0"/>
-        <pin body1="R_Calf" body2="R_Knee_Link" anchor="0.0205212 0.0 0.0563816"/>
-        <pin body1="R_Ankle_Input_Left" body2="R_Heel_Roll_Left" anchor="0.065 0.015 0.0"/>
-        <pin body1="R_Ankle_Input_Right" body2="R_Heel_Roll_Right" anchor="0.065 -0.015 0.0"/>
-    </constraints>
-
- </robot>
+</robot>
