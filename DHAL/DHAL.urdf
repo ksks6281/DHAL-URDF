@@ -48,35 +48,6 @@
         </inertial>
     </link>
 
-    <joint name="waist_yaw_joint" type="revolute">
-        <origin rpy="0 0 0" xyz="0.065 0.0 0.096"/>
-        <parent link="Pelvis"/>
-        <child link="Torso"/>
-        <axis xyz="0 0 1"/>
-        <dynamics rotor_inertia="0.0724" damping="0" friction="0"/>
-        <limit effort="360.0" velocity="10.0" lower="-1.570796" upper="1.570796"/>
-    </joint>
-    <link name="Torso">
-        <visual>
-            <origin rpy="0 0 0" xyz="0 0 0.0"/>
-            <geometry>
-                <mesh filename="URDF_Torso.dae" scale="1 1 1"/>
-            </geometry>
-            <material name="grey"/>
-        </visual>
-        <collision>
-            <origin rpy="0 0 0" xyz="0 0 0.2582"/>
-            <geometry>
-                <box size="0.14 0.242 0.374"/>
-            </geometry>
-        </collision>
-        <inertial>
-            <origin rpy="0 0 0" xyz="-0.000571 -0.275 0.192648"/>
-            <mass value="10.742786"/>
-            <inertia ixx="0.587282" ixy="0.000133" ixz="0.001513" iyy="0.558291" iyz="-0.000890" izz="0.069820"/>
-        </inertial>
-    </link>
-
     <joint name="L_hip_yaw_joint" type="revolute">
         <origin rpy="0 0.785398 0" xyz="0.0 0.1 0.0"/>
         <parent link="Pelvis"/>
@@ -422,6 +393,35 @@
             <origin rpy="0 0 0" xyz="0.004829 -0.000020 -0.035655"/>
             <mass value="0.571816"/>
             <inertia ixx="0.001485" ixy="0.000001" ixz="-0.000942" iyy="0.003882" iyz="0.000000" izz="0.002841"/>
+        </inertial>
+    </link>
+
+    <joint name="waist_yaw_joint" type="revolute">
+        <origin rpy="0 0 0" xyz="0.065 0.0 0.096"/>
+        <parent link="Pelvis"/>
+        <child link="Torso"/>
+        <axis xyz="0 0 1"/>
+        <dynamics rotor_inertia="0.0724" damping="0" friction="0"/>
+        <limit effort="360.0" velocity="10.0" lower="-1.570796" upper="1.570796"/>
+    </joint>
+    <link name="Torso">
+        <visual>
+            <origin rpy="0 0 0" xyz="0 0 0.0"/>
+            <geometry>
+                <mesh filename="URDF_Torso.dae" scale="1 1 1"/>
+            </geometry>
+            <material name="grey"/>
+        </visual>
+        <collision>
+            <origin rpy="0 0 0" xyz="0 0 0.2582"/>
+            <geometry>
+                <box size="0.14 0.242 0.374"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <origin rpy="0 0 0" xyz="-0.000571 -0.275 0.192648"/>
+            <mass value="10.742786"/>
+            <inertia ixx="0.587282" ixy="0.000133" ixz="0.001513" iyy="0.558291" iyz="-0.000890" izz="0.069820"/>
         </inertial>
     </link>
 
